@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+
+class MenuItem {
+    private String name;
+    private double price;
+
+    public MenuItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+class Restaurant {
+    private String name;
+    private ArrayList<MenuItem> menu;
+
+    public Restaurant(String name) {
+        this.name = name;
+        this.menu = new ArrayList<>();
+    }
+
+    public void addMenuItem(String name, double price) {
+        MenuItem item = new MenuItem(name, price);
+        menu.add(item);
+    }
+
+    public void displayMenu() {
+        System.out.println("Menu of " + name + ":");
+        for (MenuItem item : menu) {
+            System.out.println(item.getName() + " - $" + item.getPrice());
+        }
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Restaurant restaurant = new Restaurant("Java Delights");
+        restaurant.addMenuItem("Burger", 9.99);
+        restaurant.addMenuItem("Pizza", 12.99);
+        restaurant.addMenuItem("Salad", 6.99);
+
+        restaurant.displayMenu();
+    }
+}
